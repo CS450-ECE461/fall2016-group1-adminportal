@@ -1,0 +1,16 @@
+doctype html
+html(lang = "en")
+	head
+		title = "Create Organzation"
+	body
+		form(method = "POST", action = "/createOrganization")
+		p Organization Name 
+			input(type ="text", name = "organzation")
+		p Admin Email:
+			input(type = "email", name = "email")
+		p Password:
+			input(type = "password", name = "password")
+		p Verify Password:
+			input(type = "password", name = "verifyPassword")
+		p 
+			input(type = "submit")
