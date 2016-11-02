@@ -9,7 +9,8 @@ module.exports = exports = {
   	post: {action:'CreateOrganizationController@echoOrganization'},
   },
 
-  // '/adminLogin' : {
-  // 	get :{ view: 'adminLogin.handlebars'}
-  // }
+  '/adminlogin' : {
+    get  : { view   : 'AdminLogin.pug' },
+    post : { action : 'AdminLoginController@echoName'},
+  },
 };
