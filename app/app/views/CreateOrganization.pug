@@ -7,19 +7,21 @@ html(lang = "en")
 			form(method = "POST", action = "/createOrganization")
 				p Organization Name 
 					input(type ="text", name = "organization")
-				p Admin Email:
+				p Location:
+					input(type = "text", name = "location")
+				p Company Email:
 					input(type = "email", name = "email")
-				p Password:
-					input(type = "password", name = "password")
-				p Verify Password:
-					input(type = "password", name = "verifyPassword")
+				p Confirm Company Email:
+					input(type = "email", name = "verifyEmail")
 				p 
 					input(type = "submit")
 
 
+
+		
 	
 		if(organization)
-			p  "#{organization.name} #{organization.email}"
-			p  "#{error}"
+			p  "#{organization.name} #{organization.location} #{organization.email}"
+
 
 
