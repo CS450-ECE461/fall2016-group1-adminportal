@@ -1,7 +1,8 @@
 var blueprint = require ('@onehilltech/blueprint')
   , util      = require ('util'),
   express = require('express'),
-  expressValidator = require('express-validator')
+  expressValidator = require('express-validator'),
+  HttpError = blueprint.errors.HttpError
   ;
 
 
@@ -13,21 +14,6 @@ function CreateOrganizationController () {
 
 blueprint.controller (CreateOrganizationController);
 
-// CreateOrganizationController.prototype.echoOrganization = function () {
-//   var self = this;
-
-//   return function (req, res) {
-  	
-//   	var organization = {
-//   		name: req.body.organization, 
-//   		email:req.body.email
-//   	};
-    
-//     return res.render ('CreateOrganization.pug', { organization });
-//   };
-// };
-
-
 //this is a test function to make sure that we are posting organzation information and validating 
 CreateOrganizationController.prototype.echoOrganization = function(){
 
@@ -36,13 +22,11 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 
 		//first we must validate the data that is coming in and send back a response if we have any errors
 		validate: function(req, callback) {
-				//req.checkbody('organization','missing name parameter').notEmpty();
+				req.checkBody('organization', 'Enter an Organization Name').notEmpty();
+				req.checkBody('location', 'Enter in a location').notEmpty();
 				req.checkBody('email','Enter a Valid Email Address').isEmail();
-				//req.checkbody('password','missing password parameter').notEmpty();
-				//req.checkbody('verifyPassword','missing password parameter').notEmpty();
+				req.checkBody('verifyEmail', 'Enter a Valid Email Address').isEmail();
 				return callback(req.validationErrors(true));
-				
-
 		},
 
 
@@ -50,7 +34,7 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 
 		//execute function after santizing and validating information
 		execute: function(req, res, callback){
-			var organization = {name: req.body.organization, email: req.body.email};
+			var organization = {name: req.body.organization, location: req.body.location, email: req.body.email};
 			res.status(200).render('CreateOrganization.pug', {organization});
 			return callback(null);
 		}
