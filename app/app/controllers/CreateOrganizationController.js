@@ -36,22 +36,24 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 
 		//first we must validate the data that is coming in and send back a response if we have any errors
 		validate: function(req, callback) {
-				//req.checkbody('organization','missing name parameter').notEmpty();
-				req.checkBody('email','Enter a Valid Email Address').isEmail();
-				//req.checkbody('password','missing password parameter').notEmpty();
-				//req.checkbody('verifyPassword','missing password parameter').notEmpty();
+		// 		//req.checkbody('organization','missing name parameter').notEmpty();
+		 		req.checkBody('email','Enter a Valid Email Address').isEmail();
+		// 		//req.checkbody('password','missing password parameter').not Empty();
+		// 		//req.checkbody('verifyPassword','missing password parameter').notEmpty();
+				
 				return callback(req.validationErrors(true));
 				
 
 		},
 
-
+		
 		//Sanitize if we need too 
 
 		//execute function after santizing and validating information
 		execute: function(req, res, callback){
 			var organization = {name: req.body.organization, email: req.body.email};
-			res.status(200).render('CreateOrganization.pug', {organization});
+			//var error = "hello"
+			res.status(200).render('CreateOrganization.pug', {organization, error});
 			return callback(null);
 		}
 	};
