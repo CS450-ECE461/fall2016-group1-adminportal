@@ -1,0 +1,42 @@
+doctype html
+html
+	head
+		title Administrator Creation
+		
+	body
+		div.container
+			h1 Admin Creation
+			
+			p
+				Create a new Administrator
+				
+			form(method='post', action='/createadmin')
+				div.form-group
+					label.col-sm-2.control-label(for="username") Select a Username
+					div.col-sm-10
+						input(type="text",name="username", placeholder="Type username here")
+						
+				div.form-group
+					label.col-sm-2.control-label(for="email") Enter a valid E-mail Address
+					div.col-sm-10
+						input(type="text",name="email", placeholder="Type email here")
+
+
+				div.form-group
+					label.col-sm-2.control-label(for="password") Select a Password
+					div.col-sm-10
+						input(type="password",name="username", placeholder="Type Password here")
+						
+				div.for-group
+					label.col-sm-2.control-label Re-Enter Password
+					div.col-sm-10
+						input(type="password")
+			
+				div.form-group
+					div.col-sm-offset-2.col-sm-10
+						button.btn.btn-default(type="submit") Submit
+						
+			-	if (username)
+					p Username Entered:
+					
+					blockquote Your Username is #{username} and password is #{password}
