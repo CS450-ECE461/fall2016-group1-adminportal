@@ -7,21 +7,23 @@ html(lang = "en")
 			form(method = "POST", action = "/createOrganization")
 				p Organization Name 
 					input(type ="text", name = "organization")
+					p #{organizationError}
 				p Location:
 					input(type = "text", name = "location")
+					p #{locationError}
 				p Company Email:
 					input(type = "email", name = "email")
+					p #{emailError}
 				p Confirm Company Email:
 					input(type = "email", name = "verifyEmail")
+					p #{vEmailError}
 				p 
 					input(type = "submit")
-
-
-
 		
-	
+			
 		if(organization)
-			p  "#{organization.name} #{organization.location} #{organization.email}"
+			p  #{organization.name} #{organization.location} #{organization.email}
+
 
 
 
