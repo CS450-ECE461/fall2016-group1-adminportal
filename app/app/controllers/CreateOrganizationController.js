@@ -58,7 +58,7 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 			var locationValidation;
 			var emailBodyValidation;
 			var vEmailValidation;
-	// // 		var isEmailValidation;
+			var isEmailValidation;
 			req.Error = 0; 
 
 	// // 		//run validation functions
@@ -66,7 +66,7 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 			locationValidation = checkBody(req.body.location);
 			emailBodyValidation = checkBody(req.body.email);
 			vEmailValidation = checkSame(req.body.email, req.body.verifyEmail);
-	// // 		isEmailValidation = validateEmail(req.body.email);
+			isEmailValidation = validateEmail(req.body.email);
 				
 
 	// 		//check to see what vaidator brought back
@@ -90,10 +90,10 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 				req.Error = 1; 
 			}
 
-	// // 		if(isEmailValidation == false){
-	// // 			req.emailError = "Please Enter a Valid Email address";
-	// // 			req.Error = 1; 
-	// // 		}
+			if(isEmailValidation == false){
+				req.emailError = "Please Enter a Valid Email address";
+				req.Error = 1; 
+			}
 			
 			return callback(null);
 		 },
