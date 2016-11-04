@@ -56,7 +56,7 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 	// // 		create boolean variables that will hold true or false depending on validation functions
 			var organizationValidation; 
 			var locationValidation;
-	// // 		var emailBodyValidation;
+			var emailBodyValidation;
 	// // 		var vEmailValidation;
 	// // 		var isEmailValidation;
 			req.Error = 0; 
@@ -64,7 +64,7 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 	// // 		//run validation functions
 			organizationValidation = checkBody(req.body.organization);
 			locationValidation = checkBody(req.body.location);
-	// // 		emailBodyValidation = checkBody(req.body.email);
+			emailBodyValidation = checkBody(req.body.email);
 	// // 		vEmailValidation = checkSame(req.body.email, req.body.verifyEmail);
 	// // 		isEmailValidation = validateEmail(req.body.email);
 				
@@ -80,10 +80,10 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 				req.Error = 1; 
 			}
 
-	// // 		if(emailBodyValidation == true){
-	// // 			req.emailError = "Please enter a Valid Email Address";
-	// // 			req.Error = 1; 
-	// // 		}
+			if(emailBodyValidation == true){
+				req.emailError = "Please enter a Valid Email Address";
+				req.Error = 1; 
+			}
 
 	// // 		if(vEmailValidation == false){
 	// // 			req.vEmailError = "Verify Email must be same as Email";
@@ -109,7 +109,7 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 			if(error == 1){
 				organizationError = req.organizationError; 
 				locationError = req.locationError; 
-			// // 	emailError = req.emailError;
+				emailError = req.emailError;
 			// // 	vEmailError = req.vEmailError;
 				res.status(200).render('CreateOrganization.pug',{organizationError});
 			}else{
