@@ -5,7 +5,7 @@ module.exports = exports = {
   // },
   
   '/createOrganization' : {
-  	get : {view:'CreateOrganization.pug' },
+  	get: {view: 'CreateOrganization.pug'},
   	post: {action:'CreateOrganizationController@echoOrganization'},
   },
 
