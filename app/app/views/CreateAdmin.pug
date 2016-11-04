@@ -2,20 +2,35 @@ doctype html
 html
 	head
 		title Administrator Creation
-		
+
 	body
 		div.container
 			h1 Admin Creation
-			
+
 			p
 				Create a new Administrator
-				
+
 			form(method='post', action='/createadmin')
+				div.form-group
+					label.col-sm-2.control-label(for="fName") Select a First Name
+					div.col-sm-10
+						input(type="text",name="fName", placeholder="Type first name here")
+
+				div.form-group
+					label.col-sm-2.control-label(for="lName") Select a Last Name
+					div.col-sm-10
+						input(type="text",name="lName", placeholder="Type last name here")
+
+				div.form-group
+					label.col-sm-2.control-label(for="mInitial") Select a Middle Initial
+					div.col-sm-10
+						input(type="text",name="mInitial", placeholder="Type middle initial here")
+
 				div.form-group
 					label.col-sm-2.control-label(for="username") Select a Username
 					div.col-sm-10
 						input(type="text",name="username", placeholder="Type username here")
-						
+
 				div.form-group
 					label.col-sm-2.control-label(for="email") Enter a valid E-mail Address
 					div.col-sm-10
@@ -26,12 +41,12 @@ html
 					label.col-sm-2.control-label(for="password") Select a Password
 					div.col-sm-10
 						input(type="password",name="username", placeholder="Type Password here")
-						
+
 				div.for-group
 					label.col-sm-2.control-label Re-Enter Password
 					div.col-sm-10
 						input(type="password")
-			
+
 				div.form-group
 					div.col-sm-offset-2.col-sm-10
 						button.btn.btn-default(type="submit") Submit
