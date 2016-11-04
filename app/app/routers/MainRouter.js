@@ -13,4 +13,8 @@ module.exports = exports = {
     get  : { view   : 'AdminLogin.pug' },
     post : { action : 'AdminLoginController@echoName'},
   },
+  
+  '/createadmin' : {
+    get  : { view   : 'CreateAdmin.pug' },
+    post : { action : 'CreateAdminController@echoName'},  
 };
