@@ -26,26 +26,26 @@ function checkBody(body){
 
 }
 
-// function checkSame(string1, string2){
+function checkSame(string1, string2){
 	
-// 	if(string1 == string2){
-// 		same = true;
-// 	}else{
-// 		same = false;
-// 	}
-// 	return same;
-// }
+	if(string1 == string2){
+		same = true;
+	}else{
+		same = false;
+	}
+	return same;
+}
 
-// function validateEmail(email)   
-// { 
-// 	var isEmail;
-//  	if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){  
-//     	isEmail = true;
-//   	} else{
-//   		isEmail = false;
-//   	}
-//   	return isEmail;
-// }
+function validateEmail(email)   
+{ 
+	var isEmail;
+ 	if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){  
+    	isEmail = true;
+  	} else{
+  		isEmail = false;
+  	}
+  	return isEmail;
+}
 
 //this is a test function to make sure that we are posting organzation information and validating 
 CreateOrganizationController.prototype.echoOrganization = function(){
@@ -57,7 +57,7 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 			var organizationValidation; 
 			var locationValidation;
 			var emailBodyValidation;
-	// // 		var vEmailValidation;
+			var vEmailValidation;
 	// // 		var isEmailValidation;
 			req.Error = 0; 
 
@@ -65,7 +65,7 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 			organizationValidation = checkBody(req.body.organization);
 			locationValidation = checkBody(req.body.location);
 			emailBodyValidation = checkBody(req.body.email);
-	// // 		vEmailValidation = checkSame(req.body.email, req.body.verifyEmail);
+			vEmailValidation = checkSame(req.body.email, req.body.verifyEmail);
 	// // 		isEmailValidation = validateEmail(req.body.email);
 				
 
@@ -85,10 +85,10 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 				req.Error = 1; 
 			}
 
-	// // 		if(vEmailValidation == false){
-	// // 			req.vEmailError = "Verify Email must be same as Email";
-	// // 			req.Error = 1; 
-	// // 		}
+			if(vEmailValidation == false){
+				req.vEmailError = "Verify Email must be same as Email";
+				req.Error = 1; 
+			}
 
 	// // 		if(isEmailValidation == false){
 	// // 			req.emailError = "Please Enter a Valid Email address";
@@ -110,13 +110,13 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 				organizationError = req.organizationError; 
 				locationError = req.locationError; 
 				emailError = req.emailError;
-			// // 	vEmailError = req.vEmailError;
-				res.status(200).render('CreateOrganization.pug',{organizationError});
+				vEmailError = req.vEmailError;
+				res.status(200).render('CreateOrganization.pug',{organizationError, locationError, emailError, vEmailError});
 			}else{
 				res.status(200).render('CreateOrganization.pug', {organization});
 			}
 
-			res.status(200).render('CreateOrganization.pug', {organization, error});
+			
 
 			
 			return callback(null);
