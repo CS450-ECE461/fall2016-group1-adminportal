@@ -1,7 +1,12 @@
 doctype html
-html
+html(lang="en")
 	head
-		title Administrator Creation
+		title Administrator
+
+
+		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css")
+		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
 
 	body
 		div.container
@@ -12,41 +17,44 @@ html
 
 			form(method='post', action='/createadmin')
 				div.form-group
-					label.col-sm-2.control-label(for="fName") Select a First Name
+					label.col-sm-3.control-label(for="fName") Select a First Name
 					div.col-sm-10
 						input(type="text",name="fName", placeholder="Type first name here")
 
 				div.form-group
-					label.col-sm-2.control-label(for="lName") Select a Last Name
+					label.col-sm-3.control-label(for="lName") Select a Last Name
 					div.col-sm-10
 						input(type="text",name="lName", placeholder="Type last name here")
 
 				div.form-group
-					label.col-sm-2.control-label(for="mInitial") Select a Middle Initial
+					label.col-sm-3.control-label(for="mInitial") Select a Middle Initial
 					div.col-sm-10
 						input(type="text",name="mInitial", placeholder="Type middle initial here")
 
 				div.form-group
-					label.col-sm-2.control-label(for="username") Select a Username
+					label.col-sm-3.control-label(for="username") Select a Username
 					div.col-sm-10
 						input(type="text",name="username", placeholder="Type username here")
 
 				div.form-group
-					label.col-sm-2.control-label(for="email") Enter a valid E-mail Address
+					label.col-sm-3.control-label(for="email") Enter a valid E-mail Address
 					div.col-sm-10
 						input(type="text",name="email", placeholder="Type email here")
 
-
 				div.form-group
-					label.col-sm-2.control-label(for="password") Select a Password
+					label.col-sm-3.control-label(for="password") Select a Password
 					div.col-sm-10
 						input(type="password",name="username", placeholder="Type Password here")
 
-				div.for-group
-					label.col-sm-2.control-label Re-Enter Password
+				div.form-group
+					label.col-sm-3.control-label Re-Enter Password
 					div.col-sm-10
 						input(type="password")
 
 				div.form-group
 					div.col-sm-offset-2.col-sm-10
 						button.btn.btn-default(type="submit") Submit
+
+		a(href='/AdminHome') Home Page
+		br
+		a(href='/AdminLogin') Login

@@ -3,7 +3,7 @@ module.exports = exports = {
   //   get  : { view   : 'helloworld.pug' },
   //   post : { action : 'HelloWorldController@echoName'},
   // },
-  
+
   '/createOrganization' : {
   	get: {view: 'CreateOrganization.pug'},
   	post: {action:'CreateOrganizationController@echoOrganization'},
@@ -13,9 +13,14 @@ module.exports = exports = {
     get  : { view   : 'AdminLogin.pug' },
     post : { action : 'AdminLoginController@echoName'},
   },
-  
+
   '/createadmin' : {
     get  : { view   : 'CreateAdmin.pug' },
-    post : { action : 'CreateAdminController@echoName'},  
+    post : { action : 'CreateAdminController@echoName'},
+  },
+
+  '/AdminHome' : {
+    get : {view : 'AdminHome.pug' }
   }
+
 };
