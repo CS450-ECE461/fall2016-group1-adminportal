@@ -2,30 +2,38 @@ doctype html
 html
 	head
 		title Administrator Login
-		
+
+		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css")
+		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
+
 	body
 		div.container
 			h1 Admin Login
-			
+
 			p
 					Blah Enter your Username and Password
-				
+
 			form(method='post', action='/adminlogin')
 				div.form-group
 					label.col-sm-2.control-label(for="username") Username
 					div.col-sm-10
 						input(type="text",name="username", placeholder="Type username here")
-					
+
 				div.for-group
 					label.col-sm-2.control-label(for="password") Password
 					div.col-sm-10
 						input(type="text",name="password", placeholder="Enter Password")
-			
+
 				div.form-group
 					div.col-sm-offset-2.col-sm-10
 						button.btn.btn-default(type="submit") Submit
-						
+
 			-	if (username)
 					p Username Entered:
-					
+
 					blockquote Your Username is #{username}
+
+			a(href='/AdminHome') Home Page
+			br
+			a(href='/CreateAdmin') Register
