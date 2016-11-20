@@ -1,3 +1,5 @@
+var passport = require ('passport')
+;
 module.exports = exports = {
   // '/helloworld' : {
   //   get  : { view   : 'helloworld.pug' },
@@ -16,7 +18,7 @@ module.exports = exports = {
 
   '/createadmin' : {
     get  : { view   : 'CreateAdmin.pug' },
-    post : { action : 'CreateAdminController@echoName'},
+    post : { action : 'CreateAdminController@signup'},
   },
 
   '/AdminHome' : {

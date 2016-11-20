@@ -44,7 +44,7 @@ html(lang="en")
 				div.form-group
 					label.col-sm-3.control-label(for="password") Select a Password
 					div.col-sm-10
-						input(type="password",name="username", placeholder="Type Password here")
+						input(type="password",name="password", placeholder="Type Password here")
 
 				div.form-group
 					label.col-sm-3.control-label Re-Enter Password
@@ -52,6 +52,7 @@ html(lang="en")
 						input(type="password")
 
 				div.form-group
+					p= errorDisplay
 					div.col-sm-offset-2.col-sm-10
 						button.btn.btn-default(type="submit") Submit
 
