@@ -1,7 +1,7 @@
 var passport = require ('passport')
 ;
 module.exports = exports = {
-  
+
   '/createOrganization' : {
   	get: {view: 'CreateOrganization.pug'},
   	post: {action:'CreateOrganizationController@echoOrganization'},
@@ -16,9 +16,5 @@ module.exports = exports = {
     get  : { view   : 'CreateAdmin.pug' },
     post : { action : 'CreateAdminController@signup'},
   },
-
-  '/AdminHome' : {
-    get : {view : 'AdminHome.pug' }
-  }
 
 };
