@@ -26,16 +26,6 @@ function checkBody(body){
 
 }
 
-//function ErrorReturn(error, UsernameError){
-//	if(error.status == '422'){
-//		UsernameError = "Incorrect Username/Password";
-//	}
-//	else {
-//		UsernameError = "Unknown Error";
-//	}
-//	return Username;
-//}
-
 AdminLoginController.prototype.echoName = function(){
 
 	return{
@@ -70,33 +60,20 @@ AdminLoginController.prototype.echoName = function(){
 
 		execute: function(req, res, callback){
 			var error = req.Error; 
-			var user = {username : req.body.username,
-						password : req.body.password,
-						};
-			UsernameError = req.UsernameError; 
-			PasswordError = req.PasswordError; 	
 			//returns to page with error notes
 			if(error == 1){
+				UsernameError = req.UsernameError; 
+				PasswordError = req.PasswordError; 
 				res.status(200).render('AdminLogin.pug',{UsernameError, PasswordError});
 			}else{
-//				request
-//					.post("")
-//					.type("json")
-//					.set("Accept", "application/json")
-//					.send({username: user.username, password: user.password})
-//					.expect(200)
-//					.end(ErrorReturn(err, UsernameError))
-//				if(err){
-//					res.status(200).render('AdminLogin.pug',{UsernameError, PasswordError});					
-//				}
-//				else{
-					res.status(200).render('AdminLogin.pug', {username: user.username,password: user.password,UsernameError, PasswordError});
-//				}		
+				UsernameError = req.UsernameError; 
+				PasswordError = req.PasswordError; 			
+				res.status(200).render('AdminLogin.pug', {username: req.body.username,password: req.body.password,UsernameError, PasswordError});
+			}		
 			return callback(null);
-			}
-		};
+		}
+	};
 
-	}
 }
 
 module.exports = exports = AdminLoginController;
