@@ -55,7 +55,7 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 		validate: function(req, callback) {
 	// // 		create boolean variables that will hold true or false depending on validation functions
 			var organizationValidation; 
-			var locationValidation;
+			var countryValidation;
 			var emailBodyValidation;
 			var vEmailValidation;
 			var isEmailValidation;
@@ -63,7 +63,6 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 
 	// // 		//run validation functions
 			organizationValidation = checkBody(req.body.organization);
-			locationValidation = checkBody(req.body.location);
 			emailBodyValidation = checkBody(req.body.email);
 			vEmailValidation = checkSame(req.body.email, req.body.verifyEmail);
 			isEmailValidation = validateEmail(req.body.email);
@@ -72,11 +71,6 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 	// 		//check to see what vaidator brought back
 			if(organizationValidation == true){
 				req.organizationError = "Please enter an organization";
-				req.Error = 1; 
-			}
-
-			if(locationValidation == true){
-				req.locationError = "Please enter in a location";
 				req.Error = 1; 
 			}
 
@@ -115,11 +109,10 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 			console.log(organization);
 			
 			if(error == 1){
-				organizationError = req.organizationError; 
-				locationError = req.locationError; 
+				organizationError = req.organizationError;  
 				emailError = req.emailError;
 				vEmailError = req.vEmailError;
-				res.status(200).render('CreateOrganization.pug',{organization, organizationError, locationError, emailError, vEmailError});
+				res.status(200).render('CreateOrganization.pug',{organization, organizationError, emailError, vEmailError});
 			}else{
 				res.status(200).render('CreateOrganization.pug', {organization});
 			}

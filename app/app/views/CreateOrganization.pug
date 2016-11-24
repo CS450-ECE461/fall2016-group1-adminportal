@@ -9,14 +9,11 @@ html(lang = "en")
 					input(type ="text", name = "organization" value = organization.name)
 					p #{organizationError}
 				p Country
-					input(type = "text". name = "country" value = organization.location.country)
-					p #{countryError}
+					input(type = "text", name = "country" value = organization.location.country)
 				p State
 					input(type = "text", name = "state" value = organization.location.state)
-					p #{stateError}
 				p City
 					input(type = "text", name = "city" value = organization.location.city)
-					p #{cityError}
 				p Company Email:
 					input(type = "email", name = "email" value = organization.email)
 					p #{emailError}
@@ -28,7 +25,7 @@ html(lang = "en")
 		
 			
 		if(organization)
-			p  #{organization.name} #{organization.location} #{organization.email}
+			p  #{organization.name} #{organization.location.country} #{organization.location.state} #{organization.location.city} #{organization.email}
 
 
 
