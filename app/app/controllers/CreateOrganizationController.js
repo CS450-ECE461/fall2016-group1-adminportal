@@ -119,7 +119,7 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 				locationError = req.locationError; 
 				emailError = req.emailError;
 				vEmailError = req.vEmailError;
-				res.status(200).render('CreateOrganization.pug',{organizationError, locationError, emailError, vEmailError});
+				res.status(200).render('CreateOrganization.pug',{organization, organizationError, locationError, emailError, vEmailError});
 			}else{
 				res.status(200).render('CreateOrganization.pug', {organization});
 			}
