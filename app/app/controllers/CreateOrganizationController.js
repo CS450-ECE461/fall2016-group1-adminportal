@@ -103,8 +103,16 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 
 		//execute function after santizing and validating information
 		execute: function(req, res, callback){
-			var organization = {name: req.body.organization, location: req.body.location, email: req.body.email, verifyEmail:req.body.verifyEmail};
-			var error = req.Error; 
+			var organization = {name: req.body.organization, 
+								location: {
+									country: req.body.country,
+									state: req.body.state, 
+									city: req.body.city
+								},
+								email: req.body.email, 
+								verifyEmail:req.body.verifyEmail};
+			var error = req.Error;
+			console.log(organization);
 			
 			if(error == 1){
 				organizationError = req.organizationError; 
@@ -115,6 +123,8 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 			}else{
 				res.status(200).render('CreateOrganization.pug', {organization});
 			}
+
+
 
 			
 
