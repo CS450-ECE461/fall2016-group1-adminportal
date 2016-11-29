@@ -55,7 +55,6 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 		validate: function(req, callback) {
 	// // 		create boolean variables that will hold true or false depending on validation functions
 			var organizationValidation; 
-			var locationValidation;
 			var emailBodyValidation;
 			var vEmailValidation;
 			var isEmailValidation;
@@ -63,7 +62,6 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 
 	// // 		//run validation functions
 			organizationValidation = checkBody(req.body.organization);
-			locationValidation = checkBody(req.body.location);
 			emailBodyValidation = checkBody(req.body.email);
 			vEmailValidation = checkSame(req.body.email, req.body.verifyEmail);
 			isEmailValidation = validateEmail(req.body.email);
@@ -75,11 +73,7 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 				req.Error = 1; 
 			}
 
-			if(locationValidation == true){
-				req.locationError = "Please enter in a location";
-				req.Error = 1; 
-			}
-
+			
 			if(emailBodyValidation == true){
 				req.emailError = "Please enter a Valid Email Address";
 				req.Error = 1; 
@@ -103,15 +97,21 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 
 		//execute function after santizing and validating information
 		execute: function(req, res, callback){
-			var organization = {name: req.body.organization, location: req.body.location, email: req.body.email, verifyEmail:req.body.verifyEmail};
+			var organization = {name: req.body.organization, 
+								location: {
+									country: req.body.country, 
+									region: req.body.region, 
+									locality: req.body.locality 
+								},
+								email: req.body.email, 
+								verifyEmail:req.body.verifyEmail};
 			var error = req.Error; 
 			
 			if(error == 1){
 				organizationError = req.organizationError; 
-				locationError = req.locationError; 
 				emailError = req.emailError;
 				vEmailError = req.vEmailError;
-				res.status(200).render('CreateOrganization.pug',{organizationError, locationError, emailError, vEmailError});
+				res.status(200).render('CreateOrganization.pug',{organizationError, emailError, vEmailError});
 			}else{
 				res.status(200).render('CreateOrganization.pug', {organization});
 			}
