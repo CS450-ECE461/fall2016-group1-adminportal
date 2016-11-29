@@ -5,25 +5,19 @@ html(lang = "en")
 	body
 		div.container
 			form(method = "POST", action = "/createOrganization")
-				p Organization Name
-					input(type ="text", name = "organization" value = organization.name)
+				p Organization Name 
+					input(type ="text", name = "organization")
 					p #{organizationError}
-				p Country
-					input(type = "text". name = "country" value = organization.location.country)
-					p #{countryError}
-				p State
-					input(type = "text", name = "state" value = organization.location.state)
-					p #{stateError}
-				p City
-					input(type = "text", name = "city" value = organization.location.city)
-					p #{cityError}
+				p Location:
+					input(type = "text", name = "location")
+					p #{locationError}
 				p Company Email:
-					input(type = "email", name = "email" value = organization.email)
+					input(type = "email", name = "email")
 					p #{emailError}
 				p Confirm Company Email:
-					input(type = "email", name = "verifyEmail" value = organization.verifyEmail)
+					input(type = "email", name = "verifyEmail")
 					p #{vEmailError}
-				p
+				p 
 					input(type = "submit")
 		
 			

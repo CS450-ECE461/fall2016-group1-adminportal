@@ -3,7 +3,7 @@ var passport = require ('passport')
 module.exports = exports = {
 
   '/createOrganization' : {
-  	get: {action:'ROrganizationController@renderOrganization'},
+  	get: {view: 'CreateOrganization.pug'},
   	post: {action:'CreateOrganizationController@echoOrganization'},
   },
 
