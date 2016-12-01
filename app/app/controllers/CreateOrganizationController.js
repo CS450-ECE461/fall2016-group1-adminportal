@@ -2,7 +2,8 @@ var blueprint = require ('@onehilltech/blueprint')
   , util      = require ('util'),
   express = require('express'),
   expressValidator = require('express-validator'),
-  HttpError = blueprint.errors.HttpError
+  HttpError = blueprint.errors.HttpError,
+  request = require('superagent')
   ;
 
 
@@ -103,9 +104,11 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 									region: req.body.region, 
 									locality: req.body.locality 
 								},
-								email: req.body.email, 
-								verifyEmail:req.body.verifyEmail};
+								emailAddress: req.body.email, 
+								};
 			var error = req.Error; 
+
+
 			
 			if(error == 1){
 				organizationError = req.organizationError; 
@@ -113,13 +116,41 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 				vEmailError = req.vEmailError;
 				res.status(200).render('CreateOrganization.pug',{organizationError, emailError, vEmailError});
 			}else{
-				res.status(200).render('CreateOrganization.pug', {organization});
-			}
+				request
+					.post('localhost:5000/api/v1/orgs')
+					.send({organization: organization})
+					.end(function (err, resp){
+				
+					if(err){ 
+						// if(err.status == '422'){
+						// 	errorMessage = "email and or organization name has already been used";
+						// 	res.status(200).render('CreateOrganization.pug', {organization, errorMessage});
+						// }else if(err.status == '409'){
+						// 	errorMessage = "Email has already been used";
+						// 	res.status(200).render('CreateOrganization.pug', {organization, errorMessage});
+						// }else{
+						// 	errorMessage = "something went wrong";
+						// 	res.status(200).render('CreateOrganization.pug', {organization, errorMessage});
+						// }
+						errorMessage = "we have an error";
+						res.status(200).render('CreateOrganization.pug', {organization, errorMessage});
+					}else{ 
+						errorMessage = "yay";
+						res.status(200).render('CreateOrganization.pug', {organization, errorMessage});
+					}
+						 //res.status(200).render('CreateOrganization.pug', {organization});
+						 return callback(null);
+					 });
+					 
+					 //success = req.hello;
+					
+					//res.status(200).render('CreateOrganization.pug', {organization});
+				}
 
 			
 
 			
-			return callback(null);
+			//return callback(null);
 		}
 	};
 
