@@ -98,7 +98,9 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 
 		//execute function after santizing and validating information
 		execute: function(req, res, callback){
-			var organization = {name: req.body.organization, 
+			var organization = {
+								handle: req.body.handle, 
+								name: req.body.organization, 
 								location: {
 									country: req.body.country, 
 									region: req.body.region, 
@@ -118,39 +120,34 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 			}else{
 				request
 					.post('localhost:5000/api/v1/orgs')
-					.send({organization: organization})
+					.send({org: organization})
 					.end(function (err, resp){
-				
-					if(err){ 
-						// if(err.status == '422'){
-						// 	errorMessage = "email and or organization name has already been used";
-						// 	res.status(200).render('CreateOrganization.pug', {organization, errorMessage});
-						// }else if(err.status == '409'){
-						// 	errorMessage = "Email has already been used";
-						// 	res.status(200).render('CreateOrganization.pug', {organization, errorMessage});
-						// }else{
-						// 	errorMessage = "something went wrong";
-						// 	res.status(200).render('CreateOrganization.pug', {organization, errorMessage});
-						// }
-						errorMessage = "we have an error";
-						res.status(200).render('CreateOrganization.pug', {organization, errorMessage});
-					}else{ 
-						errorMessage = "yay";
-						res.status(200).render('CreateOrganization.pug', {organization, errorMessage});
-					}
-						 //res.status(200).render('CreateOrganization.pug', {organization});
+						if(err){ 
+							if(err.status == '422'){
+								errorMessage = "email and or organization name has already been used";
+								res.status(200).render('CreateOrganization.pug', {organization, errorMessage});
+							}else if(err.status == '409'){
+								errorMessage = "Email has already been used";
+								res.status(200).render('CreateOrganization.pug', {organization, errorMessage});
+							}else{
+								errorMessage = "something went wrong";
+								res.status(200).render('CreateOrganization.pug', {organization, errorMessage});
+							}
+						}else{ 
+							errorMessage = "yay";
+							res.status(200).render('CreateOrganization.pug', {organization, errorMessage});
+						}
+						 
 						 return callback(null);
-					 });
+					});
 					 
-					 //success = req.hello;
 					
-					//res.status(200).render('CreateOrganization.pug', {organization});
 				}
 
 			
 
 			
-			//return callback(null);
+		
 		}
 	};
 
