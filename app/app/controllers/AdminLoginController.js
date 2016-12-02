@@ -2,7 +2,8 @@ var blueprint = require ('@onehilltech/blueprint')
   , util      = require ('util'),
   express = require('express'),
   expressValidator = require('express-validator'),
-  HttpError = blueprint.errors.HttpError
+  HttpError = blueprint.errors.HttpError, 
+  request = require('superagent')
   ;
 
 

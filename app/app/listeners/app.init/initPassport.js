@@ -1,6 +1,7 @@
 'use strict';
 var passport      = require ('passport')
-  , LocalStrategy = require ('passport-local').Strategy
+  , LocalStrategy = require ('passport-local').Strategy,
+  request = require('superagent')
   ;
 
 module.exports = initPassport;
@@ -12,11 +13,34 @@ function initPassport (app) {
   passport.use (new LocalStrategy (opts, authorize));
 
   function authorize (username, password, done) {
-    User.findOne ({ username: username }, function (err, user) {
-      if (err) { return done (err); }
-      if (!user) { return done (null, false); }
-      if (!user.verifyPassword (password)) { return done (null, false); }
-      return done (null, user);
-    });
+    var newUser = {
+      "username": username, 
+      "password": password
+    };
+
+    request
+      .post('localhost:5000/api/v1/auth/jwt')
+      .type("json")
+      .set("Accept", "application/json")
+      .send(newUser)
+      .end(function(error, resp){
+        if(error){
+          if(error.status == '422')
+            console.log(error);
+        }
+        else{
+          var token = resp.body.jwt; 
+          return done(null, token);
+        }
+        return done(null, false);
+      });
+    }
   }
-}
+//     User.findOne ({ username: username }, function (err, user) {
+//       if (err) { return done (err); }
+//       if (!user) { return done (null, false); }
+//       if (!user.verifyPassword (password)) { return done (null, false); }
+//       return done (null, user);
+//     });
+//   }
+// }
