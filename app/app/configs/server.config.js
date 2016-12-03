@@ -24,12 +24,12 @@ module.exports = exports = {
 
     passport: {
       session: {
-        serializer: function (user, done) {
-          return done (null, user.id);
+        serializer: function (token, done) {
+          return done (null, token);
         },
 
-        deserializer: function (id, done) {
-          User.findById (id, done);
+        deserializer: function (token, done) {
+          return done (null, token);
         }
       }
     },
