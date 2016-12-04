@@ -19,12 +19,12 @@ html(lang="en")
 				div.form-group
 					label.col-sm-3.control-label(for="fName") Select a First Name
 					div.col-sm-10
-						input(type="text",name="fName", placeholder="Type first name here")
+						input(type="text",name="fName", placeholder="Type first name here" required)
 
 				div.form-group
 					label.col-sm-3.control-label(for="lName") Select a Last Name
 					div.col-sm-10
-						input(type="text",name="lName", placeholder="Type last name here")
+						input(type="text",name="lName", placeholder="Type last name here" required)
 
 				div.form-group
 					label.col-sm-3.control-label(for="mInitial") Select a Middle Initial
@@ -39,17 +39,17 @@ html(lang="en")
 				div.form-group
 					label.col-sm-3.control-label(for="email") Enter a valid E-mail Address
 					div.col-sm-10
-						input(type="text",name="email", placeholder="Type email here")
+						input(type="email",name="email", placeholder="Type email here" required )
 
 				div.form-group
 					label.col-sm-3.control-label(for="password") Select a Password
 					div.col-sm-10
-						input(type="password",name="password", placeholder="Type Password here")
+						input(type="password",name="password", placeholder="Type Password here" required)
 
 				div.form-group
-					label.col-sm-3.control-label Re-Enter Password
+					label.col-sm-3.control-label(for="confirmPassowrd") Re-Enter Password
 					div.col-sm-10
-						input(type="password")
+						input(type="password" name="confirmPassword" placeholder="Re-Enter Passord" required)
 
 				div.form-group
 					p= errorDisplay
