@@ -1,6 +1,15 @@
 var passport = require ('passport')
 ;
+
+function userLoggedIn(req, res, next){
+  if(req.isAuthenticated())
+    return next (); 
+  res.redirect('/login');
+}
+
+
 module.exports = exports = {
+
 
   '/createOrganization' : {
   	get: {view: 'CreateOrganization.pug'},
