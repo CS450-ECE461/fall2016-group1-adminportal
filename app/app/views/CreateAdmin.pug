@@ -8,50 +8,51 @@ html(lang="en")
 		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css")
 		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
 
-	body
-		div.container
-			h1 Admin Creation
+	body(background = "http://imgh.us/Prattle_Background.png")
+		div.container(style = "position: aboslute; right: 0px;height:100%;width:482px;background:#03A9F4")
+			div(align = "center" style = "color: #37474F;padding-top:0px")
+				h1 Admin Creation
 
-			p
-				Create a new Administrator
+			div(align = "center" style = "color: #37474F; padding-top: 5px")
+				p Create a new Administrator
 
-			form(method='post', action='/createadmin')
-				div.form-group
-					label.col-sm-3.control-label(for="fName") Select a First Name
+			form.form-horizontal(method='post', action='/createadmin')
+				div.form-group(align = "center" style = "padding-top:3px")
+					label.col-sm-3.control-label(for="fName" style = "color:#37474F") Select a First Name
 					div.col-sm-10
-						input(type="text",name="fName", placeholder="Type first name here" required)
+						input(type="text",name="fName", placeholder="Type first name here" style = "color: #01579B; font-weight: bold" required)
 
-				div.form-group
-					label.col-sm-3.control-label(for="lName") Select a Last Name
+				div.form-group(align = "center" style = "padding-top:3px")
+					label.col-sm-3.control-label(for="lName" style = "color:#37474F") Select a Last Name
 					div.col-sm-10
-						input(type="text",name="lName", placeholder="Type last name here" required)
+						input(type="text",name="lName", placeholder="Type last name here" style = "color:#01579B; font-weight: bold" required)
 
-				div.form-group
-					label.col-sm-3.control-label(for="mInitial") Select a Middle Initial
+				div.form-group(align = "center" style = "padding-top:3px")
+					label.col-sm-3.control-label(for="mInitial" style = "color:#37474F") Select a Middle Initial
 					div.col-sm-10
-						input(type="text",name="mInitial", placeholder="Type middle initial here")
+						input(type="text",name="mInitial", placeholder="Type middle initial here" style = "color:#01579B; font-weight: bold")
 
-				div.form-group
-					label.col-sm-3.control-label(for="username") Select a Username
+				div.form-group(align = "center" style = "padding-top:3px")
+					label.col-sm-3.control-label(for="username" style = "color:#37474F") Select a Username
 					div.col-sm-10
-						input(type="text",name="username", placeholder="Type username here")
+						input(type="text",name="username", placeholder="Type username here" style = "color:#01579B; font-weight: bold")
 
-				div.form-group
-					label.col-sm-3.control-label(for="email") Enter a valid E-mail Address
+				div.form-group(align = "center" style = "padding-top:3px")
+					label.col-sm-3.control-label(for="email" style = "color:#37474F") Enter a valid E-mail Address
 					div.col-sm-10
-						input(type="email",name="email", placeholder="Type email here" required )
+						input(type="email",name="email", placeholder="Type email here" style = "color:#01579B; font-weight: bold" required )
 
-				div.form-group
-					label.col-sm-3.control-label(for="password") Select a Password
+				div.form-group(align = "center" style = "padding-top:3px")
+					label.col-sm-3.control-label(for="password" style = "color:#37474F") Select a Password
 					div.col-sm-10
-						input(type="password",name="password", placeholder="Type Password here" required)
+						input(type="password",name="password", placeholder="Type Password here" style = "color#01579B; font-weight: bold" required)
 
-				div.form-group
-					label.col-sm-3.control-label(for="confirmPassowrd") Re-Enter Password
+				div.form-group(align = "center" style = "padding-top:3px")
+					label.col-sm-3.control-label(for="confirmPassword" style = "color:#37474F") Re-Enter Password
 					div.col-sm-10
-						input(type="password" name="confirmPassword" placeholder="Re-Enter Passord" required)
+						input(type="password" name="confirmPassword" placeholder="Re-Enter Passord" style = "color:#01579B; font-weight: bold" required)
 
-				div.form-group
+				div.form-group(align = "center" style = "padding-top:3px")
 					p= errorDisplay
 					div.col-sm-offset-2.col-sm-10
 						button.btn.btn-default(type="submit") Submit
