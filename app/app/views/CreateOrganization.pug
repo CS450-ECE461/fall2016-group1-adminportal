@@ -1,36 +1,60 @@
 doctype html
-html(lang = "en")
+html(lang="en")
 	head
-		title = title
-	body
-		div.container
-			form(method = "POST", action = "/createOrganization")
-				p Organization Name 
-					input(type ="text", name = "organization")
-					p #{organizationError}
-				p Admin User Name:
-					input(type = "text", name = "handle")
-				p Country:
-					input(type = "text", name = "country")
-				p State: 
-					input(type = "text", name = "region")
-				p City: 
-					input(type = "text", name = "locality")
-				p Company Email:
-					input(type = "email", name = "email")
-					p #{emailError}
-				p Confirm Company Email:
-					input(type = "email", name = "verifyEmail")
-					p #{vEmailError}
-				p 
-					input(type = "submit")
-
-			p #{errorMessage}
-		
-			
-		if(organization)
-			p  #{organization.name} #{organization.location.country} #{organization.location.region} #{organization.location.locality} #{organization.email}
+		title Administrator
 
 
+		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css")
 
 
+	body(background = "http://imgh.us/Prattle_Background.png")
+		div.container(style = "position: aboslute; right: 0px;height:100%;width:482px;background:#03A9F4")
+			div(align = "center" style = "color: #37474F;padding-top:0px")
+				h1 Organization Creation
+
+			div(align = "center" style = "color: #37474F; padding-top: 5px")
+				p Create a new Organization
+
+			form.form-horizontal(method='post', action='/createOrganization')
+				div.form-group(align = "center" style = "padding-top:3px")
+					label.col-sm-3.control-label(for="organization" style = "color:#37474F") Select an Organization Name: 
+					div.col-sm-10
+						input(type="text",name="organization", placeholder="Type organization here" style = "color: #01579B; font-weight: bold" required)
+
+				div.form-group(align = "center" style = "padding-top:3px")
+					label.col-sm-3.control-label(for="handle" style = "color:#37474F") Admin User Name:
+					div.col-sm-10
+						input(type="text",name="handle", placeholder="Type admin user name here" style = "color:#01579B; font-weight: bold" required)
+
+				div.form-group(align = "center" style = "padding-top:3px")
+					label.col-sm-3.control-label(for="country" style = "color:#37474F") Select a Country:
+					div.col-sm-10
+						input(type="text",name="country", placeholder="Type country here" style = "color:#01579B; font-weight: bold")
+
+				div.form-group(align = "center" style = "padding-top:3px")
+					label.col-sm-3.control-label(for="region" style = "color:#37474F") Select a State:
+					div.col-sm-10
+						input(type="text",name="region", placeholder="Type state here" style = "color:#01579B; font-weight: bold")
+
+				div.form-group(align = "center" style = "padding-top:3px")
+					label.col-sm-3.control-label(for="locality" style = "color:#37474F") Select a City:
+					div.col-sm-10
+						input(type="text",name="locality", placeholder="Type city here" style = "color:#01579B; font-weight: bold" required )
+
+				div.form-group(align = "center" style = "padding-top:3px")
+					label.col-sm-3.control-label(for="email" style = "color:#37474F") Select an Email: 
+					div.col-sm-10
+						input(type="text",name="email" placeholder="Type email here" style = "color#01579B; font-weight:bold" required)
+
+				div.form-group(align = "center" style = "padding-top:3px")
+					label.col-sm-3.control-label(for="verifyEmail" style = "color:#37474F") Confirm Email
+					div.col-sm-10
+						input(type="text", name="verifyEmail" placeholder="Re-Enter email" style = "color:#01579B; font-weight: bold" required)
+
+				div.form-group(align = "center")
+					p= errorDisplay
+					button.btn.btn-default(type="submit", style = "color:#37474F") Submit 
+
+
+		a(href='/AdminLogin') Login

@@ -35,7 +35,7 @@ CreateAdminController.prototype.signup = function () {
               res.render('CreateAdmin.pug', {errorDisplay: 'Something went wrong, try again.'});
             }
           }else{
-            return  res.redirect('/CreateOrganization');
+            return  res.redirect('/createOrganization');
           }
         });
   };

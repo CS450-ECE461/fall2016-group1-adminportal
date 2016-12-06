@@ -6,7 +6,7 @@ html(lang="en")
 
 		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
 		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css")
-		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
+
 
 	body(background = "http://imgh.us/Prattle_Background.png")
 		div.container(style = "position: aboslute; right: 0px;height:100%;width:482px;background:#03A9F4")
@@ -52,10 +52,9 @@ html(lang="en")
 					div.col-sm-10
 						input(type="password" name="confirmPassword" placeholder="Re-Enter Passord" style = "color:#01579B; font-weight: bold" required)
 
-				div.form-group(align = "center" style = "padding-top:3px")
+				div.form-group(align = "center")
 					p= errorDisplay
-					div.col-sm-offset-2.col-sm-10
-						button.btn.btn-default(type="submit") Submit
+					button.btn.btn-default(type="submit", style = "color:#37474F") Submit 
 
 
 		a(href='/AdminLogin') Login
