@@ -17,7 +17,7 @@ module.exports = exports = {
   },
 
   '/adminlogin' : {
-    get  : { view   : 'AdminLogin.html' },
+    get  : { view   : 'AdminLogin.pug' },
     post : { 
               before: [passport.authenticate('local', {failureRedirect: '/adminlogin'})],
               action: 'AdminLoginController@echoName'},

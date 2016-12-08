@@ -65,15 +65,11 @@ AdminLoginController.prototype.echoName = function(){
 			if(error == 1){
 				UsernameError = req.UsernameError; 
 				PasswordError = req.PasswordError; 
-				res.status(200).render('AdminLogin.html',{UsernameError, PasswordError});
+				res.status(200).render('AdminLogin.pug',{UsernameError, PasswordError});
 			}else{
 				UsernameError = req.UsernameError; 
 				PasswordError = req.PasswordError; 			
-<<<<<<< HEAD
 				res.status(200).render('dashboard.pug', {username: req.body.username});
-=======
-				res.status(200).render('AdminLogin.html', {username: req.body.username,password: req.body.password,UsernameError, PasswordError});
->>>>>>> f26a889b05b2ec2f49fe3a99b055454e9a22e393
 			}		
 			return callback(null);
 		}
