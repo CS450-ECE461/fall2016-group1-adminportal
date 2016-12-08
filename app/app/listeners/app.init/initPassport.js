@@ -14,12 +14,12 @@ function initPassport (app) {
 
   function authorize (username, password, done) {
     var newUser = {
-      "username": username, 
+      "username": username,
       "password": password
     };
 
     request
-      .post('localhost:5000/api/v1/auth/jwt')
+      .post('http://prattle.bdfoster.com/api/v1/auth/jwt')
       .type("json")
       .set("Accept", "application/json")
       .send(newUser)
@@ -29,7 +29,7 @@ function initPassport (app) {
             console.log(error);
         }
         else{
-          var token = resp.body.jwt; 
+          var token = resp.body.jwt;
           return done(null, token);
         }
         return done(null, false);
