@@ -119,7 +119,7 @@ CreateOrganizationController.prototype.echoOrganization = function(){
 				res.status(200).render('CreateOrganization.pug',{organizationError, emailError, vEmailError});
 			}else{
 				request
-					.post('http://prattle.bdfoster.com/api/v1/users')
+					.post('http://prattle.bdfoster.com/api/v1/org')
 					.send({org: organization})
 					.end(function (err, resp){
 						if(err){
