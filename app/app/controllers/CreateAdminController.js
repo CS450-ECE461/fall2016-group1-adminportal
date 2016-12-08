@@ -11,6 +11,7 @@ blueprint.controller (CreateAdminController);
 
 CreateAdminController.prototype.signup = function () {
   return function (req, res) {
+    // take user info from form
      var user = {
        "firstName" : req.body.fName,
        "middleName" : req.body.mInitial,
@@ -19,11 +20,11 @@ CreateAdminController.prototype.signup = function () {
        "password" : req.body.password,
         "handle" : req.body.username,
     };
-    console.log(user)
     request
-        .post('localhost:5000/api/v1/users')
+        .post('http://prattle.bdfoster.com/api/v1/users')
         .send({ user: user})
         .end(function (err, resp){
+          //check for potential errors from backend
           if(err){
             if(err.status == '422'){
               res.render('CreateAdmin.pug', {errorDisplay: 'Username and or email have been used already.'});
